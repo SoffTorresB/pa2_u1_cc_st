@@ -7,11 +7,37 @@ import jakarta.inject.Singleton;
 
 //@ApplicationScoped // delego el control al contenedor que es ArC
 //@RequestScoped -> solo para aplicaciones web
-@Singleton 
+@Singleton
 public class PedidoService {
 
-    @Inject
+    // Inyeccion de dependencias por atributo
+
+    /*
+     * @Inject
+     * private MailService mailService;
+     */
+
+    // private MailService mailService;
+
+    // Inyeccion de dependencias por constructor
+
+    /*
+     * @Inject
+     * public PedidoService(MailService mailService) {
+     * 
+     * this.mailService = mailService;
+     * }
+     */
+
     private MailService mailService;
+
+    // Inyeccion de dependencia por método set
+
+    @Inject
+    public void setMailService(MailService mailService) {
+        System.out.println("Se está inyectando el servico de email pedido service");
+        this.mailService = mailService;
+    }
 
     public void realizar(Pedido pedido) {
 
