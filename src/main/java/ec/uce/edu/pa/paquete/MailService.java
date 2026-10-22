@@ -1,13 +1,14 @@
 package ec.uce.edu.pa.paquete;
 
+import io.quarkus.arc.Unremovable;
 //import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
+//import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Singleton;
 
 //@ApplicationScoped //delego el control al contenedor
 //@RequestScoped -> solo para aplicaciones web
 @Singleton 
-
+@Unremovable 
 public class MailService {
       public void enviar(String correo, String asunto, String cuerpo) {
 
