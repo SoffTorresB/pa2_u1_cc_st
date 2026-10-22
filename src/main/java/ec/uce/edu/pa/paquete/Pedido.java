@@ -1,10 +1,11 @@
 package ec.uce.edu.pa.paquete;
 
 public class Pedido {
-private String cliente;
+    private String cliente;
     private String producto;
     private double total;
     private String correo;
+    private String telefono;
 
     public String getCliente() {
         return cliente;
@@ -43,6 +44,14 @@ private String cliente;
         this.producto = producto;
         this.total = total;
         this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
 }

@@ -1,21 +1,23 @@
 package ec.uce.edu.pa.paquete;
 
-import io.quarkus.arc.Unremovable;
+import jakarta.inject.Named;
 //import jakarta.enterprise.context.ApplicationScoped;
 //import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Singleton;
 
 //@ApplicationScoped //delego el control al contenedor
 //@RequestScoped -> solo para aplicaciones web
-@Singleton 
-@Unremovable 
-public class MailService {
-      public void enviar(String correo, String asunto, String cuerpo) {
+@Singleton
+@Named("mail")
+public class MailService implements Notificacion {
 
-        System.out.println("Enviando correo a: " + correo);
-        System.out.println("Asunto: " + asunto);
-        System.out.println("Cuerpo: " + cuerpo);
+    @Override
+    public void enviar(String destino, String mensaje) {
+        System.out.println("Enviando correo a: " + destino);
+        System.out.println("Mensaje: " + mensaje);
         System.out.println("Correo enviado con éxito");
+        System.out.println("Fin de envio del correo");
+
     }
 
 }
