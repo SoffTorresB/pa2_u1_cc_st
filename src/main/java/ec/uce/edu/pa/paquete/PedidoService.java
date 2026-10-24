@@ -1,13 +1,13 @@
 package ec.uce.edu.pa.paquete;
 
 //import jakarta.enterprise.inject.spi.CDI;
-//import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 //import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 //import jakarta.inject.Singleton;
 import jakarta.inject.Named;
 
-//@ApplicationScoped // delego el control al contenedor que es ArC
+@ApplicationScoped // delego el control al contenedor que es ArC
 //@RequestScoped -> solo para aplicaciones web
 //@Singleton
 public class PedidoService {
@@ -36,6 +36,8 @@ public class PedidoService {
                 " ha sido realizado con éxito. ";
         // Notificacion del pedido por correo
         this.notificacionCorreo.enviar(pedido.getCorreo(), cuerpo);
+        this.notificacionCorreo.setCantidad(this.notificacionCorreo.getCantidad()+1);
+        this.notificacionCorreo.setNombre("Correo de pedido");
 
         // Notificacion del pedido por SMS
         this.notificacionSMS.enviar(pedido.getTelefono(), cuerpo);
