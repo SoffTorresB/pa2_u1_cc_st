@@ -1,14 +1,14 @@
 package ec.uce.edu.pa.paquete;
 
 public interface Notificacion {
-    public void enviar(String destino, String mensaje);
+    public void enviar(String destino, String msj);
 
-    public Integer getCantidad();
+    void setCant(Integer i);
 
-    public void setCantidad(Integer cantidad);
+    Integer getCant();
 
-    public String getNombre();
+    String getName();
 
-    public void setNombre(String nombre);
+    void setName(String name);
 
 }

@@ -9,27 +9,18 @@ import jakarta.inject.Inject;
 public class Main implements QuarkusApplication {
 
     @Inject
-    private PedidoService pedidoService;
+    private MatriculaService matriculaService;
 
-    @Inject
-    private CompraService compraService;
     public static void main(String[] args) {
         Quarkus.run(Main.class, args);
     }
 
     @Override
     public int run(String... args) {
-        System.out.println("Iniciando aplicacion Quarkus");
-
-        Pedido pedido = new Pedido("Juan Pérez", "laptop", 1500.00, "jp123@gmail.com");// creamos manualmente el objeto
-        pedido.setTelefono("0996579493");                                                                               // de la clase Pedido
-        this.pedidoService.realizar(pedido);
-
-        Compra compra = new Compra("Sofía Torres","tablet",1234.00,"satorresb1@uce.edu.ec");
-        compra.setTelefono("0996579476");
-        this.compraService.realizar(compra);
-
+        System.out.println("---------------------------\nIniciando la app Quarkus\n---------------------------");
+        Matricula matricula = new Matricula("Sofía Torres", "Programacion Avanzada II", 45.0, "sofia@uce.edu.ec",
+                "0987654321");
+        matriculaService.realizar(matricula, "");
         return 0;
     }
-
 }

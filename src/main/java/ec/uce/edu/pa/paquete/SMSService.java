@@ -3,44 +3,34 @@ package ec.uce.edu.pa.paquete;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 
-@Singleton 
+@Singleton
 @Named("sms")
-
 public class SMSService implements Notificacion {
+    private Integer cant = 0;
+    private String name;
 
     @Override
-    public void enviar(String destino, String mensaje) {
-        System.out.println("Enviando SMS a: " + destino);
-        System.out.println("Mensaje: " + mensaje);
-        System.out.println("SMS enviado con éxito");
-        System.out.println("Fin de envio del SMS");
-
+    public void enviar(String destino, String msj) {
+        System.out.println("Enviar SMS a " + destino);
+        System.out.println("Mensaje:" + msj);
+        System.out.println("SMS enviado con exito. \n Fin del envio del SMS");
+        System.out.println("-------------------------------------------");
     }
 
-    @Override
-    public Integer getCantidad() {
-        // TODO Auto-generated method stub
-        return null;
+    public Integer getCant() {
+        return cant;
     }
 
-    @Override
-    public void setCantidad(Integer cantidad) {
-        // TODO Auto-generated method stub
-        
+    public void setCant(Integer cant) {
+        this.cant = cant;
     }
 
-    @Override
-    public String getNombre() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNombre'");
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void setNombre(String nombre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNombre'");
+    public void setName(String name) {
+        this.name = name;
     }
 
-    }
-
-
+}
