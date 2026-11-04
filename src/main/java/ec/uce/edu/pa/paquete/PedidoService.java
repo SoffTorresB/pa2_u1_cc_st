@@ -1,45 +1,36 @@
 package ec.uce.edu.pa.paquete;
-
-//import jakarta.enterprise.inject.spi.CDI;
+import ec.uce.edu.pa.paquete.Interceptors.Auditoria;
 import jakarta.enterprise.context.ApplicationScoped;
-//import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-//import jakarta.inject.Singleton;
-import jakarta.inject.Named;
-
-@ApplicationScoped // delego el control al contenedor que es ArC
-//@RequestScoped -> solo para aplicaciones web
-//@Singleton
+ 
+@ApplicationScoped // Delego el control al contenedor ArC
+// @RequestScoped //Aplicaciones web
+// @Singleton //funcionalidad que no es lógica del negocio
 public class PedidoService {
-
-    @Inject
-    @Named("mail")
-
-    private MailService notificacionCorreo;
-    @Inject
-    @Named("sms")
-
-    private SMSService notificacionSMS;
-
-    public void realizar(Pedido pedido) {
-
-        System.out.println("Realizando pedido... ");
+ 
+    @Auditoria
+    public String realizar(Pedido pedido, String valor) {
+ 
+        Long init = System.currentTimeMillis();
+        try {
+            Thread.sleep(1500);
+        } catch (Exception e) {
+ 
+            e.printStackTrace();
+        }
+        System.out.println("realizando pedido...");
+ 
         System.out.println("Pedido realizado para el cliente: " + pedido.getCliente());
         System.out.println("Producto: " + pedido.getProducto());
-        System.out.println("Total:" + pedido.getTotal());
+        System.out.println("Total: " + pedido.getTotal());
         System.out.println("Correo: " + pedido.getCorreo());
-        System.out.println("Pedido realizado con éxito. ");
-
-        // envio de mail
-        String cuerpo = "Estimado " + pedido.getCliente() + " su pedido de " +
-                pedido.getProducto() + " por un total de $" + pedido.getTotal() +
-                " ha sido realizado con éxito. ";
-        // Notificacion del pedido por correo
-        this.notificacionCorreo.enviar(pedido.getCorreo(), cuerpo);
-        this.notificacionCorreo.setCantidad(this.notificacionCorreo.getCantidad()+1);
-        this.notificacionCorreo.setNombre("Correo de pedido");
-
-        // Notificacion del pedido por SMS
-        this.notificacionSMS.enviar(pedido.getTelefono(), cuerpo);
+ 
+        System.out.println("Pedido realizado con éxito.");
+ 
+        Long fin = System.currentTimeMillis()-init;
+ 
+        return "Pedido realizado con éxito" + " tiempo de ejecucion= " + fin;
+ 
     }
+ 
 }
+ 

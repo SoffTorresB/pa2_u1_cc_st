@@ -11,23 +11,20 @@ public class Main implements QuarkusApplication {
     @Inject
     private PedidoService pedidoService;
 
-    @Inject
-    private CompraService compraService;
     public static void main(String[] args) {
+
         Quarkus.run(Main.class, args);
+
     }
 
     @Override
     public int run(String... args) {
-        System.out.println("Iniciando aplicacion Quarkus");
+        System.out.println("Iniciando aplicación Quarkus");
 
-        Pedido pedido = new Pedido("Juan Pérez", "laptop", 1500.00, "jp123@gmail.com");// creamos manualmente el objeto
-        pedido.setTelefono("0996579493");                                                                               // de la clase Pedido
-        this.pedidoService.realizar(pedido);
+        // Creamos manualmente el objeto de la clase pedido
+        Pedido pedido = new Pedido("Juan Pérez", "Laptop", 1500.00, "0991677893");
 
-        Compra compra = new Compra("Sofía Torres","tablet",1234.00,"satorresb1@uce.edu.ec");
-        compra.setTelefono("0996579476");
-        this.compraService.realizar(compra);
+        pedidoService.realizar(pedido, "valor1");
 
         return 0;
     }

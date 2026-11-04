@@ -3,9 +3,17 @@ package ec.uce.edu.pa.paquete;
 public class Compra {
     private String cliente;
     private String producto;
-    private double total;
     private String correo;
+    private double total;
     private String telefono;
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public String getCliente() {
         return cliente;
@@ -23,14 +31,6 @@ public class Compra {
         this.producto = producto;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -39,20 +39,24 @@ public class Compra {
         this.correo = correo;
     }
 
-    public Compra(String cliente, String producto, double total, String correo) {
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Compra() {
+
+    }
+
+    public Compra(String cliente, String producto, String correo, double total, String telefono) {
         this.cliente = cliente;
         this.producto = producto;
-        this.total = total;
         this.correo = correo;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
+        this.total = total;
         this.telefono = telefono;
     }
-    
 
 }
