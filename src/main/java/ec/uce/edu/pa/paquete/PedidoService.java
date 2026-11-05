@@ -1,21 +1,27 @@
 package ec.uce.edu.pa.paquete;
 import ec.uce.edu.pa.paquete.Interceptors.Auditoria;
+import ec.uce.edu.pa.paquete.Interceptors.Mail;
+import ec.uce.edu.pa.paquete.Interceptors.MedirTiempo;
+import ec.uce.edu.pa.paquete.Interceptors.SMS;
 import jakarta.enterprise.context.ApplicationScoped;
  
 @ApplicationScoped // Delego el control al contenedor ArC
 // @RequestScoped //Aplicaciones web
 // @Singleton //funcionalidad que no es lógica del negocio
 public class PedidoService {
- 
-    @Auditoria
+    //3: ENVIO DE sms //4: mail
+
+    @Mail 
+    @SMS 
+    @Auditoria//2
+    @MedirTiempo //1
+    
     public String realizar(Pedido pedido, String valor) {
  
-        Long init = System.currentTimeMillis();
         try {
             Thread.sleep(1500);
         } catch (Exception e) {
  
-            e.printStackTrace();
         }
         System.out.println("realizando pedido...");
  
@@ -25,10 +31,9 @@ public class PedidoService {
         System.out.println("Correo: " + pedido.getCorreo());
  
         System.out.println("Pedido realizado con éxito.");
+
  
-        Long fin = System.currentTimeMillis()-init;
- 
-        return "Pedido realizado con éxito" + " tiempo de ejecucion= " + fin;
+        return "Pedido realizado con éxito" ;
  
     }
  

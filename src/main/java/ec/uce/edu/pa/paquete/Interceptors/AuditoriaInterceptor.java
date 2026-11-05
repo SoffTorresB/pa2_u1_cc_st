@@ -5,6 +5,7 @@ import java.lang.reflect.Parameter;
 
 import ec.uce.edu.pa.paquete.AuditoriaService;
 import ec.uce.edu.pa.paquete.Pedido;
+import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
@@ -12,6 +13,7 @@ import jakarta.interceptor.InvocationContext;
 
 @Auditoria
 @Interceptor
+@Priority (2020)
 public class AuditoriaInterceptor {
 
     @Inject
